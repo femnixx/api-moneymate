@@ -130,7 +130,7 @@ const checkAndUpdateSavingGoal = async (req,res) => {
         await connection.execute(
             "UPDATE saving_goals SET status = ? WHERE id = ?", [status, req.session.user.id]
         );
-        return res.status(200).json({message: "Successfully updated saving goals"});
+        return res.status(200).json({status: status, message: "Successfully updated saving goals"});
     } catch (err) {
         console.error(err);
         return res.status(500).json({message: "Internal Server Error. Failed to update saving goals"});

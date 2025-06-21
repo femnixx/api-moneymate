@@ -25,7 +25,7 @@ const createBudget = async (req,res) => {
         console.error(err);
         res.status(500).json({message: "Internal Server Error. Please try again"});
     } finally {
-        if (connectionn) {
+        if (connection) {
             connection.release();
         }
     }

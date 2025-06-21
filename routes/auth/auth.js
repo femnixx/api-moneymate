@@ -5,6 +5,6 @@ const { register, login, logout, getUser } = require('../../controllers/authCont
 router.post('/register', register);
 router.post('/login', login);
 router.post('/logout', logout);
-router.post('/user', getUser);
+router.get('/user', getUser);
 
 module.exports = router;

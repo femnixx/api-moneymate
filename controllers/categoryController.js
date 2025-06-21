@@ -62,6 +62,14 @@ const addCategories = async (req, res) => {
 
     try {
         connection = await pool.getConnection();
+        const [exists] = await connection.execute(
+            "SELECT * FROM categories WHERE user_id = ? AND name = ?",
+            [req.session.user.id, name]
+        );
+        if (exists.length > 0) {
+            return res.status(409).json({message: "Category already exists."})
+        }
+
         await connection.execute(
             "INSERT INTO categories (user_id, name) VALUES (?, ?)", [req.session.user.id, name]
         );
@@ -219,7 +227,7 @@ const getIdByCategory = async (req, res) => {
             "SELECT id FROM categories WHERE name = ? AND user_id = ?", [name, req.session.user.id]
         );
         if (result.length === 0) {
-            return res.send(404).json({message: "Category not found"});
+            return res.status(404).json({message: "Category not found"});
         }
         return res.status(200).json({id: result[0].id});
     } catch (err) {

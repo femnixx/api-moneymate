@@ -29,7 +29,7 @@ app.use('/api/auth', authRoute);
 app.use('/api/budget', budgetRoute);
 app.use('/api/category', categoryRoute);
 app.use('/api/expense', expenseRoute);
-app.use('/api/saving_goals', savingGoals);
+app.use('/api/goals', savingGoals);
 
 // error handling middleware
 app.use((req, res, next) =>{
