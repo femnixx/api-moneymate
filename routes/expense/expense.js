@@ -4,8 +4,8 @@ const {addExpense, deleteExpense, updateExpense, getExpense, getExpenseSum} = re
 
 router.post('/add', addExpense);
 router.get('/list', getExpense);
-router.put('/edit/:categoryId', updateExpense);
-router.delete('/delete/:categoryId', deleteExpense);
+router.put('/edit/:expenseId', updateExpense);
+router.delete('/delete/:expenseId', deleteExpense);
 router.get('/sum', getExpenseSum);
 
 module.exports = router;

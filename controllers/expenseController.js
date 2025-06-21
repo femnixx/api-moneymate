@@ -34,6 +34,9 @@ const deleteExpense = async (req,res) => {
     if (!req.session.user) {
         return res.status(401).json({message: "Unauthorized. Please log in"});
     }
+    if (!expenseId) {
+        return res.status(400).json({message: "Please input all fields."})
+    }
     let connection;
 
     try {
